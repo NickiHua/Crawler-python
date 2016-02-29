@@ -1,0 +1,70 @@
+print "This is a string"
+
+x = 1
+if x == 1:
+    # indented four spaces
+    print "hello world."
+
+myint = 1
+myfloat = 7.0
+
+mystr1 = "hi there!"
+mystr2 = "im fine"
+
+mystr3 = mystr1 + mystr2
+
+if isinstance(myfloat, float):
+    print "Float number is %d" % myfloat
+
+if isinstance(mystr3, basestring):
+    print "String is %s" % mystr3
+
+mylist = []
+mylist.append(1)
+mylist.append(2)
+mylist.append(3)
+
+for x in mylist:
+    print x
+
+# ** means power
+
+squared = 7 ** 2
+print(squared)
+
+even = [2,4,6,8]
+odd = [1,3,5,7]
+all_number = even + odd
+print(all_number)
+
+print(all_number * 3)
+
+myname = "Hua"
+myage = 28
+print "My name is %s, and I am %d" % (myname, myage)
+
+
+def type_check(correct_type):
+    def check(old_function):
+        def new_function(arg):
+            if (isinstance(arg, correct_type)):
+                return old_function(arg)
+            else:
+                print "Bad Type"
+        return new_function
+    return check
+
+
+@type_check(int)
+def times2(num):
+    return num*2
+
+print times2(2)
+times2('Not A Number')
+
+@type_check(str)
+def first_letter(word):
+    return word[0]
+
+print first_letter('Hello World')
+first_letter(['Not', 'A', 'String'])
